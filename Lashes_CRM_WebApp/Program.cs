@@ -24,5 +24,6 @@ namespace Lashes_CRM_WebApp
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+       
     }
-}
+ }

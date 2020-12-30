@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
 
+namespace Lashes_CRM_WebApp
+{
     public class Customer
     {
         public int CustomerID { get; set; }
@@ -16,9 +18,9 @@ using System.Xml.Serialization;
         [Required]
         public string EmailAddress { get; set; }
         [Required]
-    public DateTime ProductionDate { get; set; } 
-    
-    public string LashType;
+        public DateTime ProductionDate { get; set; }
+
+        public string LashType;
         public List<string> LashSize;
         public string TreatmentType;
         public bool ActiveUser = true;
@@ -43,3 +45,4 @@ using System.Xml.Serialization;
             return $"{CustomerID} - {FullName} - {EmailAddress} - {PhoneNumber}";
         }
     }
+}

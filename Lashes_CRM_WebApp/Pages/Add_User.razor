@@ -1,10 +1,10 @@
 ﻿@page "/Add_User"
-
+@Intialize();
 <h1>Add New Customer</h1>
 
 <h3>New Customer Entry Form</h3>
 
-<EditForm Model="@customer" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@customer" OnValidSubmit="@HandleValidSubmit" ShowClearButton="true">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
@@ -78,12 +78,22 @@
 
     <button type="submit">Submit</button>
 </EditForm>
+<p>@customer</p>
 
 @code {
-    private Customer customer = new Customer() { ProductionDate = DateTime.UtcNow };
+    Customer customer = new Customer() { ProductionDate = DateTime.UtcNow };
 
     private void HandleValidSubmit()
     {
-       
-}
-}
+        try
+        {
+            Add_User.Saving(customer);
+            CustomerDatabase.SaveCustomerData(Configuration.CustomerFileLocation);
+        }
+        catch (Exception e)
+        {
+            Logger.Log("Intialisation: " + e.Message + e.StackTrace);
+            
+        }
+    }
+    }
