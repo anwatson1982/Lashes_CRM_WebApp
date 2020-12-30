@@ -1,0 +1,88 @@
+﻿@page "/Add_User"
+
+<h1>Add New Customer</h1>
+
+<h3>New Customer Entry Form</h3>
+
+<EditForm Model="@customer" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <p>
+        <label>
+            First Name:
+            <InputText @bind-Value="customer.FirstName" />
+        </label>
+        <label>
+            Surname:
+            <InputText @bind-Value="customer.LastName" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Phone Number:
+            <InputText @bind-Value="customer.PhoneNumber" />
+        </label>
+        <label>
+            Email Address:
+            <InputText @bind-Value="customer.EmailAddress" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Lash Type:
+            <InputSelect @bind-Value="customer.LashType">
+                <option value="">Select Lash Type ...</option>
+                <option value="Classic">Classic</option>
+                <option value="Russian">Russian</option>
+                <option value="Hybrid">Hybrid</option>
+            </InputSelect>
+        </label>
+        <label>
+            Lash Size:
+            <InputSelect @bind-Value="customer.LashSize">
+                <option value="">Select Lash Size ...</option>
+                <option value="0.8">0.8mm</option>
+                <option value="0.9">0.9mm</option>
+                <option value="0.10">0.10mm</option>
+                <option value="0.11">0.11mm</option>
+                <option value="0.12">0.12mm</option>
+                <option value="0.13">0.13mm</option>
+                <option value="0.14">0.14mm</option>
+                <option value="0.15">0.15mm</option>
+                <option value="0.16">0.16mm</option>
+                <option value="0.17">0.17mm</option>
+                <option value="0.18">0.18mm</option>
+                <option value="0.19">0.19mm</option>
+                <option value="0.20">0.20mm</option>
+                <option value="0.21">0.21mm</option>
+                <option value="0.22">0.22mm</option>
+            </InputSelect>
+        </label>
+        <label>
+            Lash Type:
+            <InputSelect @bind-Value="customer.TreatmentType">
+                <option value="">Select Treatment Type ...</option>
+                <option value="Full Set">Full_Set</option>
+                <option value="Infills">Infills</option>
+            </InputSelect>
+        </label>
+    </p>
+    <p>
+        <label>
+            Production Date:
+            <InputDate @bind-Value="customer.ProductionDate" />
+        </label>
+    </p>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private Customer customer = new Customer() { ProductionDate = DateTime.UtcNow };
+
+    private void HandleValidSubmit()
+    {
+       
+}
+}
