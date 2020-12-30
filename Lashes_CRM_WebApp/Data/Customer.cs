@@ -16,7 +16,7 @@ using System.Xml.Serialization;
         [Required]
         public string EmailAddress { get; set; }
         [Required]
-    public DateTime ProductionDate { get; set; }
+    public DateTime ProductionDate { get; set; } 
     
     public string LashType;
         public List<string> LashSize;
