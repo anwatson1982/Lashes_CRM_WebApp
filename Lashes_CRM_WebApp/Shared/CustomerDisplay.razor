@@ -1,0 +1,27 @@
+﻿
+@*<h3>@_customer.FullName</h3>
+
+<p>@_customer.EmailAddress</p>
+<p>@_customer.TreatmentType</p>*@
+
+<input @bind-value="SearchTerm" @bind-value:event="oninput" />
+<span class="text-nowrap">
+    Showing @filteredCustomers.Count out of @CustomerDatabase.Customers.Count
+</span>
+<h4 class="mt-4">Customers</h4>
+<ul>
+    @foreach (var custList in filteredCustomers)
+    {
+        <li>@custList.FullName - @custList.EmailAddress - @custList.PhoneNumber </li>
+    }
+</ul>
+
+@code {
+    private Customer _customer;
+
+
+
+    string SearchTerm { get; set; } = "";
+    List<Customer> filteredCustomers => CustomerDatabase.Customers.Where(i => i.FullName.ToLower().Contains(SearchTerm.ToLower())).ToList();
+
+}

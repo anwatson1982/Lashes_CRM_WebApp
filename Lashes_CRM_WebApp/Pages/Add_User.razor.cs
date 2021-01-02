@@ -7,7 +7,7 @@ namespace Lashes_CRM_WebApp.Pages
 {
     partial class Add_User
     {
-      public static bool Intialize ()
+        public static bool Intialize()
         {
             try
             {
@@ -26,13 +26,22 @@ namespace Lashes_CRM_WebApp.Pages
 
         public static void Saving(Customer customer1)
         {
-           
-            {
-                CustomerDatabase.Customers.Add(customer1);
-            }
-           
+
+
+            CustomerDatabase.AddCustomer(customer1);
+
+
         }
-        
+        protected override void OnAfterRender(bool firstRender)
+        {
+            // execute conditionally for loading data, otherwise this will load
+            // every time the page refreshes
+            if (firstRender)
+            {
+                // Do work to load page data and set properties
+            }
+        }
+
     }
 }
 

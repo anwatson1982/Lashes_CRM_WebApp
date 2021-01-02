@@ -22,6 +22,7 @@ namespace Lashes_CRM_WebApp
 
         public string LashType;
         public List<string> LashSize;
+    //    public Dictionary<string, bool> LashSizeDict = new Dictionary<string, bool>();
         public string TreatmentType;
         public bool ActiveUser = true;
         private bool _subscriberList = true;
@@ -42,6 +43,21 @@ namespace Lashes_CRM_WebApp
 
         public override string ToString()
         {
+            //LashSizeDict.Add("0.1", false);
+
+            //foreach(var e in LashSizeDict)
+            //{
+            //    // => e.Key (title of checkbox)
+            //    //e.Value (checkbox active)
+            //}
+
+            //LashSizeDict["0.1mm"] = false;
+
+            //if(LashSizeDict.ContainsKey("0.1"))
+            //{
+
+            //}
+
             return $"{CustomerID} - {FullName} - {EmailAddress} - {PhoneNumber}";
         }
     }

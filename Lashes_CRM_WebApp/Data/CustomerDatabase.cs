@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 using System.IO;
+using System.Linq;
 
 namespace Lashes_CRM_WebApp
 {
@@ -11,7 +12,7 @@ namespace Lashes_CRM_WebApp
 
         public static void LoadCustomerData(String fileName)
         {
-            _customers = Utilities.XMLLoad<List<Customer>>(fileName);
+            _customers = Utilities.XMLLoad<List<Customer>>(fileName);  
         }
 
         public static bool SaveCustomerData(string fileName)
@@ -22,6 +23,25 @@ namespace Lashes_CRM_WebApp
         public static bool Save(String fileName)
         {
             return false;
+        }
+
+        public static void AddCustomer(Customer c)
+        {
+            var lastID = _customers.Max(s => s.CustomerID);
+
+            c.CustomerID = lastID + 1;
+            _customers.Add(c);
+        }
+
+        public static Customer GetCustomer(int ID)
+        {
+            //  var allCustomers = from customerid in CustomerDatabase.Customers;
+            var querAllCustomers = from cust in _customers
+                                   where cust.CustomerID == 20
+                                   select cust;
+            querAllCustomers = _customers;
+                                   
+            return new Customer();
         }
 
         private static List<Customer> _customers;
