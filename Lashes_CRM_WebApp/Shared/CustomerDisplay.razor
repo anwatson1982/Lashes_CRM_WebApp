@@ -9,12 +9,12 @@
     Showing @filteredCustomers.Count out of @CustomerDatabase.Customers.Count
 </span>
 <h4 class="mt-4">Customers</h4>
-<ul>
+
     @foreach (var custList in filteredCustomers)
     {
-        <li>@custList.FullName - @custList.EmailAddress - @custList.PhoneNumber </li>
+        <p class="customerDisplayFont">@custList.FullName <br /> @custList.EmailAddress <br /> @custList.PhoneNumber <br /> <a href="Add_User"><span class="moreinfofont">More info</span></a></p>
     }
-</ul>
+
 
 @code {
     private Customer _customer;

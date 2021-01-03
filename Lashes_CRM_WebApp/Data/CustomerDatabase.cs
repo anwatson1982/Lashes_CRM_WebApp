@@ -27,10 +27,17 @@ namespace Lashes_CRM_WebApp
 
         public static void AddCustomer(Customer c)
         {
-            var lastID = _customers.Max(s => s.CustomerID);
 
-            c.CustomerID = lastID + 1;
-            _customers.Add(c);
+            var lastID = 0;
+            if (Customers.Count > 0)
+
+                lastID = _customers.Max(s => s.CustomerID);
+
+
+                c.CustomerID = lastID + 1;
+                _customers.Add(c);
+         
+        
         }
 
         public static Customer GetCustomer(int ID)
